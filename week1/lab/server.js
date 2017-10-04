@@ -9,12 +9,13 @@ http.createServer(function (request, response) {
     var pathName = url.parse(request.url).pathname;
     var fileName = pathName.substr(1); /* lets remove the "/" from the name */
 
+    var indexPage;
+
     /* lets try to read the html page found */
+
     fileSystem.readFile(fileName, callback);
 
     function callback(err, data) {
-
-        console.error(err);
 
 
 
@@ -44,15 +45,15 @@ http.createServer(function (request, response) {
             response.write(data.toString());
 
 
+
         }
         else {
             /* Send the HTTP header 
              * HTTP Status: 400 : NOT FOUND
              * Content Type: text/html 
              */
-            console.log("error" + fileName);
             response.writeHead(400, { 'Content-Type': 'text/html' });
-            response.write('<!DOCTYPE html><html><body><div>Page Not Found<br></div></body></html>');
+
         }
         /* the response is complete */
         response.end();

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div>Welcome to the read-todo page</div>
+    <button id="btn">Click me to make AJAX request!</button>
+    <div id="todoInfo">Data:</div>
+
+</body>
+
+</html>
+
+<script>
+    var btn = document.querySelector('#btn');
+    var todo = document.querySelector('#todoInfo')
+
+    var jsonObj;
+
+    btn.addEventListener('click', makeRequest);
+
+    function makeRequest() {
+        httpRequest = new XMLHttpRequest();
+
+        if (!httpRequest) {
+            todo.innerHTML = 'Cannot create an XMLHTTP instance';
+            return false;
+        }
+        httpRequest.onreadystatechange = displayContents;
+        httpRequest.open('GET', 'http://localhost:3000/todo.json');
+        httpRequest.setRequestHeader('Content-Type', 'application/json');
+        httpRequest.send();
+    }
+
+    function displayContents() {
+        if (httpRequest.readyState === XMLHttpRequest.DONE) {
+            if (httpRequest.status === 200) {
+                jsonObj = JSON.parse(httpRequest.responseText);
+                //loop through json object
+                for (i = 0; i < jsonObj.length; i++) {
+                    todo.innerHTML += '<br>' + "User ID: " + jsonObj[i].userId + " ID: " + jsonObj[i].id + " Title: " + jsonObj[i].title + " Complete: " + jsonObj[i].completed;
+                }
+
+            } else {
+                todo.innerHTML = 'There was a problem with the request.';
+            }
+        }
+    }
+
+</script>

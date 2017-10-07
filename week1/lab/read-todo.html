@@ -32,7 +32,7 @@
             return false;
         }
         httpRequest.onreadystatechange = displayContents;
-        httpRequest.open('GET', 'http://localhost:3000/todo.json');
+        httpRequest.open('GET', 'http://localhost:3000/todo');
         httpRequest.setRequestHeader('Content-Type', 'application/json');
         httpRequest.send();
     }

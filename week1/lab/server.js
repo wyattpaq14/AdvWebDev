@@ -18,7 +18,6 @@ http.createServer(function (request, response) {
     function callback(err, data) {
 
 
-
         if (fileName == 'todo.json') {
             /* Send the HTTP header 
              * HTTP Status: 200 : OK
@@ -52,7 +51,8 @@ http.createServer(function (request, response) {
              * HTTP Status: 400 : NOT FOUND
              * Content Type: text/html 
              */
-            response.writeHead(400, { 'Content-Type': 'text/html' });
+            response.writeHead(200, { 'Content-Type': 'text/html' });
+            response.write('<!DOCTYPE html><html><body><div><h3>Wyatt Paquin</h3><ul><li>potato</li><li>tomato</li><li>shomato</li></ul></div></body></html>');
 
         }
         /* the response is complete */

@@ -17,7 +17,7 @@ wss.on('connection', function(ws) {
         
     var index = clients.push(ws) - 1;   
     
-    //console.log(wss.clients);       
+    console.log(wss.clients);       
         
     var msgText = messages.join('<br />'); 
     ws.send(msgText);

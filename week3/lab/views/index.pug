@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  form(action="/", method="post", class="form-horizontal")
+    select(name="numselect")
+        each number in numbers
+          option(value=number) #{number}
+    input(type="submit", class='btn')
+

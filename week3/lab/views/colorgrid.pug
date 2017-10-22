@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  table
+      - for ( i = 0; i < selectednumber; i++ )
+          tr
+            - for( x = 0; x < selectednumber; x++ )
+                td
+                  +row()
+
+

@@ -9,6 +9,10 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Lab3', numbers: numbers });
 });
 
+router.get('/404', function (req, res, next) {
+  res.render('404', { title: 'Lab3', numbers: numbers });
+});
+
 router.post('/', function (req, res, next) {
   debug(req.body.numselect);
   res.render('colorgrid', { title: 'Lab3', selectednumber: req.body.numselect });

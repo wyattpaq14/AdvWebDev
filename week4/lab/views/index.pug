@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  h1= title
+  p
+    a(href="./view") View
+  h2=message
+  form.form-horizontal(action="/", method="post", role="form")
+        .form-group
+          label.control-label(for="firstName") First Name
+          .col
+            input#name.form-control(name="firstName")
+
+        .form-group
+          label.control-label(for="lastName") Last Name
+          .col
+            input#name.form-control(name="lastName")
+
+
+        .form-group
+          label.control-label(for="department") Department
+          .col
+            select#rating.form-control.input-sm(name="department")
+              option IT Support
+              option Finance
+              option Quality Assurance
+              option Quality Control
+              option Facilities
+        .form-group
+          label.control-label(for="startDate") Start Date
+          .col
+            input#name.form-control(name="startDate")
+
+        .form-group
+          label.control-label(for="jobTitle") Job Title
+          .col
+            input#name.form-control(name="jobTitle")
+
+        .form-group
+          label.control-label(for="salary") Salary
+          .col
+            input#name.form-control(name="salary")
+
+          
+        input(type="submit" value="Add Employee") 

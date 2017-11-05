@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var employeeSchema = new mongoose.Schema({
+
     firstName: {
         type: String,
         required: [true, 'First Name is required']

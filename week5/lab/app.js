@@ -21,6 +21,8 @@ app.set('view engine', 'pug');
 
 //dont know what this is but for some reason 
 //i was getting an access control error
+
+//should I have used app.use(queryHandler.cors()); instead?
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

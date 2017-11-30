@@ -35,19 +35,59 @@ class Model extends BaseModel {
     }
 
 
-    deleteEmployee() {
-        const url =                  
-        return this.http.post(this.APIS.Employee + 'create', data)
-                .then( data => {
-                    this.dataBindModel.saveResultMsg = 'Employee Saved'
-                    return data
+    deleteReview(evt) {
+        const url = `${this.APIS.Employee}${evt.target.dataset.id}`
+        return this.http.delete(url)
+                .then( ()=>{
+                    return this.dataBindModel.deleteResultMsg = 'Employee Deleted'                                
                 }).catch( err => {
-                    this.dataBindModel.saveResultMsg = 'Employee NOT Saved'
-                    return err
-                })                   
+                     return this.dataBindModel.deleteResultMsg = 'Employee NOT Deleted'                                 
+                }).then( () => {
+                    return this.getHomeMessage()
+                })
     }
 
+    updatePage(evt){       
+        const params = this.generateUrlParams({id: evt.target.dataset.id})
+        window.location.href = `${params}#update` 
+        
+        return Promise.resolve()
+    }
 
+    updatePageLoad(){
+        const url = `${this.APIS.Reviews}${this.urlParams().get('id')}`
+        console.log(url)
+        return this.http.get(url).then( data => {           
+            this.dataBind.firstName = data.firstName
+            this.dataBind.lastName = data.lastName
+            this.dataBind.department = data.department
+            this.dataBind.jobTitle = data.jobTitle
+            this.dataBind.salary = data.salary
+            this.dataBind.startDate = data.startDate
+            this.dataBind._id = data._id
+            return data
+        })       
+    }
+
+    updateEmployee(){
+        const data = {
+            firstName : this.dataBindModel.firstName,
+            lastName : this.dataBindModel.lastName,
+            department : this.dataBindModel.department,
+            jobTitle : this.dataBindModel.jobTitle,
+            salary : this.dataBindModel.salary,
+            startDate : this.dataBindModel.startDate
+        }  
+        const url = `${this.APIS.Employee}${this.dataBindModel._id}`
+        return this.http.put(url, data)
+                .then( data => {
+                    this.dataBindModel.updateResultMsg = 'Employee updated'
+                    return data
+                }).catch( err => {
+                    this.dataBindModel.updateResultMsg = 'Employee NOT updated'   
+                    return err
+                })  
+    }
 
     setTest() {
         this.dataBindModel.test = this.urlParams().get('id')

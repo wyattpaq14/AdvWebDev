@@ -66,6 +66,50 @@ class View {
        `)
     }
 
+    get update() {
+        return Promise.resolve(`
+
+        <h1>Rest API Demo</h1>
+        <h3 data-bind-model="updateResultMsg"></h3>
+            <form data-bind-*>
+           <br /> _id
+           <input type="text" name="_id" value="" /><br />
+           <br /> firstName
+           <input type="text" name="firstName" value="" /><br />
+           <br /> lastName
+           <input type="text" name="lastName" value="" /><br />
+           <br />
+       
+           department
+           <select name="department">
+               <option>IT Support</option>
+               <option>Finance</option>
+               <option>Quality Assurance</option>
+               <option>Quality Control</option>
+               <option>Facilities</option>
+           </select><br />
+       
+       
+           <br />startDate
+           <input type="date" name="startDate" value="" /><br />
+           <br /> jobTitle
+           <input type="text" name="jobTitle" value="" /><br />
+           <br /> salary
+           <input type="text" name="salary" value="" />
+           <br />
+       
+       
+           <br />
+           <br />
+           <input class="button is-primary" type="button" value="Save" data-bind-event="click:updateEmployee" />
+           </form>
+        
+        
+        
+        
+        `)
+    }
+
     get todo() {
         return Promise.resolve(`<h1>Todo Fetch List</h1>
                 <div data-bind-model="todoList"></div>`)

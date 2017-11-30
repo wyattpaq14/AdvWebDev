@@ -29,4 +29,9 @@ class Controller {
         return Promise.resolve()
     }
 
+    update() {        
+        return this.Model.updatePageLoad()
+        return Promise.resolve()
+    }
+
 }
